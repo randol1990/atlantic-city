@@ -1,13 +1,19 @@
 <script setup>
-  //
+  import GraficoCircular from '@/components/GraficoCircular.vue'
 </script>
 
 <template>
   <v-layout>
     <BarraMenu />
     <h2>Dashboard</h2>
+    <GraficoColumna />
+    <GraficoCircular />
+    <GraficoColumna />
 
   </v-layout>
+  
+  
+  
 </template>
 
 <style>

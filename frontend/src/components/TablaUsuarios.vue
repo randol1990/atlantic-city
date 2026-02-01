@@ -10,29 +10,18 @@ const headers = [
   { title: 'Nombres', key: 'nombres' },
   { title: 'Apellidos', key: 'apellidos' },
   { title: 'Email', key: 'email' },
-  { title: 'Categoría', key: 'categoria' },
-  { title: 'Telefono', key: 'telefono' },
+  { title: 'Rol', key: 'rol' },
+  { title: 'Estado', key: 'estado' },
   { title: 'Acciones', key: 'acciones', sortable: false }, // Columna para los botones
 ]
 
 // Datos de prueba (Items)
 const clientes = ref([
-  { id: 1, nombres: 'Mark', apellidos: 'Otto', email: '@mdo', categoria: 'Oro', telefono: '987456321' },
-  { id: 2, nombres: 'Jacob', apellidos: 'Thornton', email: '@fat', categoria: 'Bronce', telefono: '987456321' },
-  { id: 3, nombres: 'Larry', apellidos: 'the Bird', email: '@twitter', categoria: 'Plata', telefono: '987456321' },
-  { id: 4, nombres: 'John', apellidos: 'Doe', email: '@jdoe', categoria: 'Oro', telefono: '987456321' },
-  { id: 5, nombres: 'Jane', apellidos: 'Smith', email: '@jsmith', categoria: 'Plata', telefono: '987456321' },
-  { id: 1, nombres: 'Mark', apellidos: 'Otto', email: '@mdo', categoria: 'Oro', telefono: '987456321' },
-  { id: 2, nombres: 'Jacob', apellidos: 'Thornton', email: '@fat', categoria: 'Bronce', telefono: '987456321' },
-  { id: 3, nombres: 'Larry', apellidos: 'the Bird', email: '@twitter', categoria: 'Plata', telefono: '987456321' },
-  { id: 4, nombres: 'John', apellidos: 'Doe', email: '@jdoe', categoria: 'Oro', telefono: '987456321' },
-  { id: 5, nombres: 'Jane', apellidos: 'Smith', email: '@jsmith', categoria: 'Plata', telefono: '987456321' },
-  { id: 1, nombres: 'Mark', apellidos: 'Otto', email: '@mdo', categoria: 'Oro', telefono: '987456321' },
-  { id: 2, nombres: 'Jacob', apellidos: 'Thornton', email: '@fat', categoria: 'Bronce', telefono: '987456321' },
-  { id: 3, nombres: 'Larry', apellidos: 'the Bird', email: '@twitter', categoria: 'Plata', telefono: '987456321' },
-  { id: 4, nombres: 'John', apellidos: 'Doe', email: '@jdoe', categoria: 'Oro', telefono: '987456321' },
-  { id: 5, nombres: 'Jane', apellidos: 'Smith', email: '@jsmith', categoria: 'Plata', telefono: '987456321' },
-  
+  { id: 1, nombres: 'Mark', apellidos: 'Otto', email: '@mdo', rol: 'Administrador', estado: 'Activo'},
+  { id: 2, nombres: 'Jacob', apellidos: 'Thornton', email: '@fat', rol: 'Cajero', estado: 'Inactivo' },
+  { id: 3, nombres: 'Larry', apellidos: 'the Bird', email: '@twitter', rol: 'Recepcionista', estado: 'Activo' },
+  { id: 4, nombres: 'John', apellidos: 'Doe', email: '@jdoe', rol: 'Recepcionista', estado: 'Inactivo' },
+  { id: 5, nombres: 'Jane', apellidos: 'Smith', email: '@jsmith', rol: 'Cajero', estado: 'Activo' },
 ])
 
 // Funciones para los botones
@@ -46,13 +35,13 @@ const borrarCliente = (item) => console.log('Borrar:', item)
     <!-- Contenedor de la tabla de clientes -->
     <v-card class="mt-5" variant="flat" color="transparent">
         <v-layout
-        class="d-flex justify-space-between align-center mb-3">
+        class="d-flex justify-space-between align-center mb-5">
 
             <!-- Campo de búsqueda -->
             <v-text-field
                 v-model="search"
                 :loading="loading"
-                label="Buscar cliente"
+                label="Buscar usuario"
                 append-inner-icon="mdi-magnify"
                 density="compact"
                 variant="solo-filled"
@@ -64,7 +53,7 @@ const borrarCliente = (item) => console.log('Borrar:', item)
             ></v-text-field>
 
             <!-- Botón para agregar nuevo cliente -->
-            <BotonAgregarCliente />
+            <BotonAgregarUsuario />
 
         </v-layout>
 
@@ -74,7 +63,7 @@ const borrarCliente = (item) => console.log('Borrar:', item)
         :items="clientes"
         :search="search"
         class="elevation-1 custom-table"
-        density="compact"
+        density="comfortable"
         >
         <!-- Columna de acciones -->
         <template v-slot:item.acciones="{ item }">

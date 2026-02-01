@@ -15,10 +15,14 @@ declare module 'vue' {
     BarraMenu: typeof import('./src/components/BarraMenu.vue')['default']
     BotonAgregar: typeof import('./src/components/BotonAgregar.vue')['default']
     BotonAgregarCliente: typeof import('./src/components/BotonAgregarCliente.vue')['default']
+    BotonAgregarUsuario: typeof import('./src/components/BotonAgregarUsuario.vue')['default']
     Buscador: typeof import('./src/components/Buscador.vue')['default']
+    GraficoCircular: typeof import('./src/components/GraficoCircular.vue')['default']
+    GraficoColumna: typeof import('./src/components/GraficoColumna.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TablaClientes: typeof import('./src/components/TablaClientes.vue')['default']
+    TablaUsuarios: typeof import('./src/components/TablaUsuarios.vue')['default']
   }
 }

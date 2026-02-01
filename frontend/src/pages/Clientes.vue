@@ -6,8 +6,8 @@
       <v-main>
         <v-container>
           <h2>Clientes</h2>
-
-          <TablaClientes />
+          
+          <TablaClientes max-height="88vh"/>
 
           <router-view />
         </v-container>
@@ -21,5 +21,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .v-container {
+    max-height: 100vh;
+    
+  }
+
+  .TablaClientes {
+    max-height: 60vh;
   }
 </style>
