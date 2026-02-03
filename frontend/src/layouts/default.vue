@@ -3,11 +3,15 @@
 </script>
 <template>
   <v-app>
-  
+
+    <v-navigation-drawer app>
+      <BarraMenu />
+    </v-navigation-drawer> 
+
     <v-main>
       <router-view />
     </v-main>
-    <AppFooter />
+    
   </v-app>
 </template>
 

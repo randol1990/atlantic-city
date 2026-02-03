@@ -1,15 +1,12 @@
 <script></script>
 <template>
   <v-layout>
-    <BarraMenu />
     <v-app>
       <v-main>
         <v-container>
           <h2>Clientes</h2>
           
           <TablaClientes max-height="88vh"/>
-
-          <router-view />
         </v-container>
       </v-main>
     </v-app>

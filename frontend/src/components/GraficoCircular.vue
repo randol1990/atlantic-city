@@ -1,26 +1,45 @@
 <script setup>
-import { ref } from 'vue'
+  import { ref } from 'vue';
 
-const series = ref([44, 33, 23])
+  // Los datos del gráfico (valores numéricos)
+  const series = ref([44, 55, 13, 43, 22]);
 
-const options = ref({
-  chart: {
-    type: 'donut'
-  },
-  labels: ['Ventas', 'Marketing', 'Soporte'],
-  legend: {
-    position: 'bottom'
-  }
-})
+  // Configuración del gráfico
+  const chartOptions = ref({
+    chart: {
+      type: 'pie',
+    },
+    labels: ['Manzanas', 'Naranjas', 'Bananas', 'Uvas', 'Peras'],
+    colors: ['#1976D2', '#fb8c00', '#4caf50', '#f44336', '#9c27b0'], // Colores estilo Vuetify
+    legend: {
+      position: 'bottom'
+    },
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        chart: {
+          width: 200
+        },
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }]
+  });
 </script>
 
 <template>
-  <apexchart
-    type="donut"
-    height="300"
-    :options="options"
-    :series="series"
-  />
+  <v-card variant="outlined" class="mx-auto" max-width="300">
+    <v-card-title class="text-center">Distribución de Ventas</v-card-title>
+    
+    <v-card-text>
+      <apexchart
+        type="pie"
+        :options="chartOptions"
+        :series="series"
+      ></apexchart>
+    </v-card-text>
+  </v-card>
 </template>
 
 <style>
@@ -50,5 +69,6 @@ const options = ref({
 /* Leyenda */
 .apexcharts-legend-text {
   font-size: 13px !important;
+  color: #ffffff !important;
 }
 </style>

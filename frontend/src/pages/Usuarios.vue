@@ -1,7 +1,6 @@
 <script></script>
 <template>
   <v-layout>
-    <BarraMenu />
     <v-app>
       <v-main>
         <v-container>
@@ -9,7 +8,6 @@
           
           <TablaUsuarios />
 
-          <router-view />
         </v-container>
       </v-main>
     </v-app>

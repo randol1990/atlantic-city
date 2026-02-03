@@ -1,45 +1,72 @@
-
 <script setup>
-import { ref } from 'vue';
-// Importamos el componente
-import VueApexCharts from "vue3-apexcharts";
+  import { ref } from 'vue';
 
-// Registramos el componente localmente
-const apexchart = VueApexCharts;
+  // Datos de las columnas
+  const series = ref([{
+    name: 'Sesiones',
+    data: [44, 55, 57, 56, 61, 58, 63]
+  }]);
 
-// Definimos los datos reactivos con ref()
-const series = ref([{
-    name: 'Ventas',
-    data: [30, 40, 35, 50, 49, 60, 70, 91]
-}]);
-
-const chartOptions = ref({
-  chart: {
-    id: 'vuechart-example',
-    theme: {
-      mode: 'dark' // Modo oscuro
+  // Configuración estética
+  const chartOptions = ref({
+    chart: {
+      type: 'bar',
+      toolbar: { show: false } // Oculta el menú de descarga para un look más limpio
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: '55%',
+        borderRadius: 4, // Bordes redondeados como en los componentes de Vuetify
+        dataLabels: {
+          position: 'top', 
+        },
+      },
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      show: true,
+      width: 2,
+      colors: ['transparent']
+    },
+    xaxis: {
+      categories: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+    },
+    yaxis: {
+      title: { text: 'Cantidad' }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['#1976D2'] // Color Primary de Vuetify
+    },
+    tooltip: {
+      y: {
+        formatter: (val) => `${val} visitas`
+      }
     }
-  },
-  xaxis: {
-      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-  },
-  colors: ['#41B883'] // Verde característico de Vue
-});
+  });
 </script>
 
 
 
 <template>
-  <div id="chart">
-    <!-- "options" determina el diseño y el comportamiento del gráfico -->
-    <!-- "series" determina los datos que se muestran en el gráfico-->
-    <apexchart
-      width="100%"
-      type="bar"
-      :options="chartOptions"
-      :series="series" 
-    ></apexchart>
-  </div>
+  <v-card variant="outlined" class="mx-auto" max-width="600">
+    <v-card-title class="d-flex align-center">
+      <v-icon icon="mdi-bar-chart" class="me-2" color="primary"></v-icon>
+      Rendimiento Semanal
+    </v-card-title>
+    
+    <v-card-text>
+      <apexchart
+        type="bar"
+        height="208"
+        :options="chartOptions"
+        :series="series"
+      ></apexchart>
+    </v-card-text>
+  </v-card>
   
 </template>
 

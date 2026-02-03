@@ -10,11 +10,15 @@ import { createApp } from 'vue'
 // Carga las fuentes tipograficas
 import 'unfonts.css'
 
+import vuetify from './plugins/vuetify';
+import VueApexCharts from "vue3-apexcharts";
 //Se crea la instancia de la aplicacion de Vue
 const app = createApp(App)
 
 // Llama a la función de la carpeta plugins para registrar las librerias Vuetify, Pinia, Vue Router.
 registerPlugins(app)
 
+app.use(vuetify);
+app.use(VueApexCharts); // Registro global
 //Renderiza la aplicacion en el contenedor con id="app" en index.html
 app.mount('#app')
